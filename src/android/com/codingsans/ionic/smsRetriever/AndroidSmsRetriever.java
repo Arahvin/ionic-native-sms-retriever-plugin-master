@@ -222,7 +222,7 @@ public class AndroidSmsRetriever extends CordovaPlugin {
 
               data = new JSONObject();
               try {
-                final String senderAddress = extra.getString("com.google.android.gms.auth.api.phone.EXTRA_SMS_ORIGINATING_ADDRESSS");
+                final String senderAddress = extra.getString("com.google.android.gms.auth.api.phone.EXTRA_SMS_ORIGINATING_ADDRESS");
                 Log.d(TAG, senderAddress);
                 data.put("SenderAddress",senderAddress);
               } catch(JSONException e) {}
