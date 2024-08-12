@@ -213,19 +213,20 @@ public class AndroidSmsRetriever extends CordovaPlugin {
           Status status = (Status) extra.get(SmsRetriever.EXTRA_STATUS);
           switch (status.getStatusCode()) {
             case CommonStatusCodes.SUCCESS:
-              try {
-                final String senderAddress = extra.getString("com.google.android.gms.auth.api.phone.EXTRA_SMS_ORIGINATING_ADDRESSS");
-              } catch(JSONException e) {}
               final String message = extra.getString(SmsRetriever.EXTRA_SMS_MESSAGE);
               //if (!StringUtils.hasContent(message)) return;
               if(message == null) return;
 
-              Log.d(TAG, senderAddress);
+              
               Log.d(TAG, message);
 
               data = new JSONObject();
               try {
+                final String senderAddress = extra.getString("com.google.android.gms.auth.api.phone.EXTRA_SMS_ORIGINATING_ADDRESSS");
+                Log.d(TAG, senderAddress);
                 data.put("SenderAddress",senderAddress);
+              } catch(JSONException e) {}
+              try {
                 data.put("Message",message);
               } catch(JSONException e) {}
 
